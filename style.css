@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background: #dfff80 url('background.jpg') no-repeat center center;
+    background: #8cc43f url('background.jpg') no-repeat center center;
     background-size: cover;
     margin: 0;
     padding: 0;
@@ -20,8 +20,9 @@ body {
 }
 
 .logo {
-    max-width: 150px;
+    max-width: 250px;
     margin-bottom: 20px;
+    align-self: start;
 }
 
 h1 {
