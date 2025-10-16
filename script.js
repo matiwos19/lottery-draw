@@ -1,24 +1,24 @@
 let participants = [];
 
-// Parse CSV
+// --- Parse CSV ---
 function parseCSV(text) {
     const lines = text.split("\n");
     const result = [];
-    for(let i = 0; i < lines.length; i++) {
+    for (let i = 0; i < lines.length; i++) {
         const line = lines[i].trim();
-        if(line) {
+        if (line) {
             const [name, phone] = line.split(",");
-            result.push({name: name.trim(), phone: phone ? phone.trim() : ""});
+            result.push({ name: name.trim(), phone: phone ? phone.trim() : "" });
         }
     }
     return result;
 }
 
-// Load CSV
+// --- Load CSV ---
 document.getElementById('loadCsv').addEventListener('click', () => {
     const fileInput = document.getElementById('csvFile');
     const file = fileInput.files[0];
-    if(!file) {
+    if (!file) {
         alert("Please select a CSV file!");
         return;
     }
@@ -31,7 +31,7 @@ document.getElementById('loadCsv').addEventListener('click', () => {
     reader.readAsText(file);
 });
 
-// Display participants
+// --- Display Participants ---
 function displayParticipants() {
     const list = document.getElementById('participantsList');
     list.innerHTML = '';
@@ -42,22 +42,30 @@ function displayParticipants() {
     });
 }
 
-// Draw Lottery
+// --- Draw Lottery with Spinner ---
 document.getElementById('drawLottery').addEventListener('click', () => {
     const numWinners = parseInt(document.getElementById('numWinners').value);
-    if(numWinners > participants.length) {
+    if (numWinners > participants.length) {
         alert("Not enough participants!");
         return;
     }
 
-    const shuffled = [...participants].sort(() => 0.5 - Math.random());
-    const winners = shuffled.slice(0, numWinners);
+    const spinner = document.getElementById('spinner');
+    spinner.style.animation = "spin 1s linear infinite";
 
-    displayWinners(winners);
-    launchConfetti();
+    // simulate spinning for 10 seconds
+    setTimeout(() => {
+        spinner.style.animation = "none"; // stop spinner
+
+        const shuffled = [...participants].sort(() => 0.5 - Math.random());
+        const winners = shuffled.slice(0, numWinners);
+
+        displayWinners(winners);
+        launchConfetti(); // optional confetti
+    }, 10000);
 });
 
-// Display Winners
+// --- Display Winners ---
 function displayWinners(winners) {
     const list = document.getElementById('winnersList');
     list.innerHTML = '';
@@ -79,7 +87,7 @@ function launchConfetti() {
     const confettiCount = 150;
     const confetti = [];
 
-    for(let i = 0; i < confettiCount; i++) {
+    for (let i = 0; i < confettiCount; i++) {
         confetti.push({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height - canvas.height,
@@ -92,8 +100,8 @@ function launchConfetti() {
     }
 
     function draw() {
-        ctx.clearRect(0,0,canvas.width,canvas.height);
-        confetti.forEach((c, i) => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        confetti.forEach(c => {
             ctx.beginPath();
             ctx.lineWidth = c.r;
             ctx.strokeStyle = c.color;
@@ -110,8 +118,8 @@ function launchConfetti() {
             c.y += (Math.cos(c.d) + 3 + c.r / 2) / 2;
             c.tilt = Math.sin(c.tiltAngle) * 15;
 
-            if(c.y > canvas.height) {
-                confetti[i] = { 
+            if (c.y > canvas.height) {
+                confetti[i] = {
                     x: Math.random() * canvas.width,
                     y: -10,
                     r: c.r,
