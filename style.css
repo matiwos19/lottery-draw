@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #dfff80 url('background.jpg') no-repeat center center;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 600px;
+    margin: 50px auto;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 1;
+}
+
+.logo {
+    max-width: 150px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #1a5d00;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #4d9900;
+    margin-bottom: 30px;
+    font-size: 18px;
+}
+
+input, button {
+    padding: 10px;
+    margin: 5px;
+    font-size: 16px;
+}
+
+button {
+    cursor: pointer;
+    background-color: #4d9900;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: transform 0.2s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+
+li {
+    padding: 5px 10px;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+li.winner {
+    background-color: #4d9900;
+    color: white;
+    font-weight: bold;
+}

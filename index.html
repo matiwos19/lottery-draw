@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethio telecom Lottery Draw</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Logo -->
+        <img src="logo.png" alt="Ethio Telecom Logo" class="logo">
+
+        <!-- Title & Subtitle -->
+        <h1>Ethio telecom Lottery Draw</h1>
+        <p class="subtitle">Congratulations! Your lucky winners await.</p>
+
+        <!-- CSV Upload -->
+        <div class="upload-section">
+            <input type="file" id="csvFile" accept=".csv">
+            <button id="loadCsv">Load Participants</button>
+        </div>
+
+        <!-- Participants List -->
+        <h2>Participants</h2>
+        <ul id="participantsList"></ul>
+
+        <!-- Draw Section -->
+        <div class="draw-section">
+            <input type="number" id="numWinners" placeholder="Number of Winners">
+            <button id="drawLottery">Draw Lottery</button>
+        </div>
+
+        <!-- Winners List -->
+        <h2>Winners</h2>
+        <ul id="winnersList"></ul>
+    </div>
+
+    <!-- Confetti Canvas -->
+    <canvas id="confetti"></canvas>
+
+    <script src="script.js"></script>
+</body>
+</html>
